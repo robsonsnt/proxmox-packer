@@ -1,0 +1,8 @@
+proxmox_node = ""
+proxmox_url = "https://<IP>:8006/api2/json"
+proxmox_storage_pool = ""
+# proxmox_password = ""
+proxmox_username = ""
+proxmox_token = ""
+ssh_username = ""
+ssh_password = ""
