@@ -4,7 +4,7 @@ SRC_DIR := src
 .PHONY: help
 help:
 	@echo "Use: make <command>"
-	@echo "ol8 - Create a new Oracle Linux 8 Template"
+	@echo "ol8 - Create an Oracle Linux 8 Template for Proxmox"
 
 .PHONY: ol8
 ol8: 
