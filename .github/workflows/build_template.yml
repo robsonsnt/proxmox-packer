@@ -36,4 +36,4 @@ jobs:
         PKR_VAR_proxmox_node: ${{ vars.PROXMOX_NODE }}
         PKR_VAR_proxmox_storage_pool: ${{ vars.PROXMOX_STORAGE_POOL }}
         PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
-        PKR_VAR_ssh_password: ${{ vars.SSH_PASSWORD }}
+        PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
