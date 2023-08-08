@@ -14,10 +14,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    - name: Build Template
+    - name: Init Template
       run:
-        packer init oracle_linux_8/
-        packer build oracle_linux_8/
+        packer init -upgrade oracle_linux_8/
       env:
         PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
         PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
@@ -25,4 +24,16 @@ jobs:
         PKR_VAR_proxmox_node: ${{ vars.PROXMOX_NODE }}
         PKR_VAR_proxmox_storage_pool: ${{ vars.PROXMOX_STORAGE_POOL }}
         PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
-        PKR_VAR_ssh_password: ${{ vars.SSH_PASSWORD }}
+        PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
+    
+    - name: Build Template
+      run:
+         packer build oracle_linux_8/
+      env:
+        PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
+        PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
+        PKR_VAR_proxmox_token: ${{ secrets.PROXMOX_TOKEN }}
+        PKR_VAR_proxmox_node: ${{ vars.PROXMOX_NODE }}
+        PKR_VAR_proxmox_storage_pool: ${{ vars.PROXMOX_STORAGE_POOL }}
+        PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
+        PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
