@@ -1,0 +1,18 @@
+---
+- hosts: linux
+  name: Base linux configuration for packer images
+  become: true
+
+  tasks:
+    - name: Install base packages
+      yum:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - curl
+        - wget
+        - unzip
+        - git
+        - vim
+        - net-tools
+        - telnet

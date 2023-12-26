@@ -56,7 +56,25 @@ build {
         "sudo rm -rf /root/.*history", 
         "sudo rm -f /root/*ks", 
         "sudo passwd -d root", 
-        "sudo passwd -l root"
+        "sudo passwd -l root",
+        "sudo sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config",
+        "sudo systemctl restart sshd",
+        "sudo yum update -y"
         ]
   }
+
+  provisioner "ansible" {
+    groups        = ["linux"]
+    playbook_file = "./oracle_linux_8/ansible/main.yml"
+    extra_arguments = [
+      "-vvv",
+      "-e vra=false",
+      "-e ansible_port=22",
+      "-e ansible_host=${build.Host}",
+      "-e ansible_user=${build.User}",
+      "-e ansible_password=${build.Password}"
+    ]
+  }
+
+  
 }
