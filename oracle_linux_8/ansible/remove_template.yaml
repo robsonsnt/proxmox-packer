@@ -1,0 +1,27 @@
+---
+- name: Remove Template
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Get template informations
+      community.general.proxmox_kvm:
+        api_user: "{{ api_user }}"
+        api_token_id: "{{ api_token_id }}"
+        api_token_secret: "{{ api_token_secret }}"
+        api_host: "{{ proxmox_host }}"
+        vmid: "{{ vmid }}"
+        node: "{{ proxmox_node }}"
+        state: current
+      register: vm_info
+      ignore_errors: true
+
+    - name: Remove template especific ID
+      community.general.proxmox_kvm:
+        api_user: "{{ api_user }}"
+        api_token_id: "{{ api_token_id }}"
+        api_token_secret: "{{ api_token_secret }}"
+        api_host: "{{ proxmox_host }}"
+        vmid: "{{ vmid }}"
+        node: "{{ proxmox_node }}"
+        state: absent
+      when: vm_info.vmid is defined
