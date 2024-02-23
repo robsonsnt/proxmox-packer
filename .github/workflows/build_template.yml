@@ -21,7 +21,7 @@ jobs:
         ansible-playbook oracle_linux_8/ansible/remove_template.yaml \
           -e "api_user=${{ vars.PROXMOX_API_USER }}" \
           -e "api_token_id=${{ vars.PROXMOX_TOKEN_ID }}" \
-          -e "api_token_secret=${{ secrets.PROXMOX_TOKEN }}" \
+          -e "api_token_secret=${{ secrets.PROXMOX_TOKEN_TESTE }}" \
           -e "proxmox_host=${{ secrets.PROXMOX_API_HOST }}" \
           -e "vmid=${{ vars.PROXMOX_VM_ID }}" \
           -e "proxmox_node=${{ vars.PROXMOX_NODE }}"           
