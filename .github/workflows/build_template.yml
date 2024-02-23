@@ -17,7 +17,8 @@ jobs:
     
     - name: Remove Template
       run: |
-        ansible-playbook ./oracle_linux_8/ansible/remove_template.yml \
+        pwd && ls -l
+        ansible-playbook ./proxmox-packer/oracle_linux_8/ansible/remove_template.yml \
           -e "api_user=${{ vars.PROXMOX_API_USER }}" \
           -e "api_token_id=${{ vars.PROXMOX_TOKEN_ID }}" \
           -e "api_token_secret=${{ secrets.PROXMOX_TOKEN }}" \
