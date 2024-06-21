@@ -1,12 +1,18 @@
-name: Build Template Oracle Linux 8
+name: Build Templates
 
 on:
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      template_name:
+        description: 'Template to Build'
+        required: true
+        type: choice
+        options:
+          - oracle_linux
+          - rock_linux
+
 jobs:
-  run_scripts:
+  build_oracle_linux:
     runs-on:
     - self-hosted
     - packer
@@ -14,19 +20,20 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    
-    - name: Remove Template
+
+    - name: Remove Oracle Linux Template
+      if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
       run: |
-        pwd
         ansible-playbook -vv oracle_linux_8/ansible/remove_template.yaml \
           -e "api_user=${{ vars.PROXMOX_API_USER }}" \
           -e "api_token_id=${{ vars.PROXMOX_TOKEN_ID }}" \
           -e "api_token_secret=${{ secrets.PROXMOX_TOKEN_TESTE }}" \
           -e "proxmox_host=${{ secrets.PROXMOX_API_HOST }}" \
           -e "vmid=${{ vars.PROXMOX_VM_ID }}" \
-          -e "proxmox_node=${{ vars.PROXMOX_NODE }}"           
+          -e "proxmox_node=${{ vars.PROXMOX_NODE }}"
 
-    - name: Init Template
+    - name: Init Oracle Linux Template
+      if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
       run:
         packer init -upgrade oracle_linux_8/
       env:
@@ -37,10 +44,39 @@ jobs:
         PKR_VAR_proxmox_storage_pool: ${{ vars.PROXMOX_STORAGE_POOL }}
         PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
         PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
-    
-    - name: Build Template
+
+    - name: Build Oracle Linux Template
+      if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
       run:
          packer build oracle_linux_8/
+      env:
+        PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
+        PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
+
+  build_rock_linux:
+    runs-on:
+    - self-hosted
+    - packer
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Remove Rock Linux Template
+      if: ${{ github.event.inputs.template_name == 'rock_linux' }}
+      run: |
+        ansible-playbook -vv rock_linux_9/ansible/remove_template.yaml \
+          -e "api_user=${{ vars.PROXMOX_API_USER }}" \
+          -e "api_token_id=${{ vars.PROXMOX_TOKEN_ID }}" \
+          -e "api_token_secret=${{ secrets.PROXMOX_TOKEN_TESTE }}" \
+          -e "proxmox_host=${{ secrets.PROXMOX_API_HOST }}" \
+          -e "vmid=500" \
+          -e "proxmox_node=${{ vars.PROXMOX_NODE }}"
+
+    - name: Init Rock Linux Template
+      if: ${{ github.event.inputs.template_name == 'rock_linux' }}
+      run:
+        packer init -upgrade rock_linux_9/
       env:
         PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
         PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
@@ -49,3 +85,11 @@ jobs:
         PKR_VAR_proxmox_storage_pool: ${{ vars.PROXMOX_STORAGE_POOL }}
         PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
         PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
+
+    - name: Build Rock Linux Template
+      if: ${{ github.event.inputs.template_name == 'rock_linux' }}
+      run:
+         packer build rock_linux_9/
+      env:
+        PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
+        PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
