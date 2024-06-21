@@ -21,6 +21,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Set Locale
+      if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
+      run: |
+        sudo locale-gen en_US.UTF-8
+        sudo update-locale LANG=en_US.UTF-8
+        export LANG=en_US.UTF-8
+        export LC_ALL=en_US.UTF-8
+
     - name: Remove Oracle Linux Template
       if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
       run: |
@@ -61,6 +69,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+
+    - name: Set Locale
+      if: ${{ github.event.inputs.template_name == 'rock_linux' }}
+      run: |
+        sudo locale-gen en_US.UTF-8
+        sudo update-locale LANG=en_US.UTF-8
+        export LANG=en_US.UTF-8
+        export LC_ALL=en_US.UTF-8
 
     - name: Remove Rock Linux Template
       if: ${{ github.event.inputs.template_name == 'rock_linux' }}
