@@ -21,16 +21,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Set Locale
-      if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
-      run: |
-        export LANG=en_US.UTF-8
-        export LC_ALL=en_US.UTF-8
-
     - name: Remove Oracle Linux Template
       if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
       run: |
-        ansible-playbook -vv oracle_linux_8/ansible/remove_template.yaml \
+        sudo ansible-playbook -vv oracle_linux_8/ansible/remove_template.yaml \
           -e "api_user=${{ vars.PROXMOX_API_USER }}" \
           -e "api_token_id=${{ vars.PROXMOX_TOKEN_ID }}" \
           -e "api_token_secret=${{ secrets.PROXMOX_TOKEN_TESTE }}" \
@@ -68,16 +62,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Set Locale
-      if: ${{ github.event.inputs.template_name == 'rock_linux' }}
-      run: |
-        export LANG=en_US.UTF-8
-        export LC_ALL=en_US.UTF-8
-
     - name: Remove Rock Linux Template
       if: ${{ github.event.inputs.template_name == 'rock_linux' }}
       run: |
-        ansible-playbook -vv rock_linux_9/ansible/remove_template.yaml \
+        sudo ansible-playbook -vv rock_linux_9/ansible/remove_template.yaml \
           -e "api_user=${{ vars.PROXMOX_API_USER }}" \
           -e "api_token_id=${{ vars.PROXMOX_TOKEN_ID }}" \
           -e "api_token_secret=${{ secrets.PROXMOX_TOKEN_TESTE }}" \
