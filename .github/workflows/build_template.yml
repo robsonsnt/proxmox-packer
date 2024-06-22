@@ -52,6 +52,11 @@ jobs:
       env:
         PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
         PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
+        PKR_VAR_proxmox_token: ${{ secrets.PROXMOX_TOKEN }}
+        PKR_VAR_proxmox_node: ${{ vars.PROXMOX_NODE }}
+        PKR_VAR_proxmox_storage_pool: ${{ vars.PROXMOX_STORAGE_POOL }}
+        PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
+        PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
 
   build_rock_linux:
     runs-on:
@@ -93,3 +98,8 @@ jobs:
       env:
         PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
         PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
+        PKR_VAR_proxmox_token: ${{ secrets.PROXMOX_TOKEN }}
+        PKR_VAR_proxmox_node: ${{ vars.PROXMOX_NODE }}
+        PKR_VAR_proxmox_storage_pool: ${{ vars.PROXMOX_STORAGE_POOL }}
+        PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
+        PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
