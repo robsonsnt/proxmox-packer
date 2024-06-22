@@ -24,7 +24,7 @@ jobs:
     - name: Remove Oracle Linux Template
       if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
       run: |
-        sudo ansible-playbook -vv oracle_linux_8/ansible/remove_template.yaml \
+        ansible-playbook -vv oracle_linux_8/ansible/remove_template.yaml \
           -e "api_user=${{ vars.PROXMOX_API_USER }}" \
           -e "api_token_id=${{ vars.PROXMOX_TOKEN_ID }}" \
           -e "api_token_secret=${{ secrets.PROXMOX_TOKEN_TESTE }}" \
@@ -65,7 +65,7 @@ jobs:
     - name: Remove Rock Linux Template
       if: ${{ github.event.inputs.template_name == 'rock_linux' }}
       run: |
-        sudo ansible-playbook -vv rock_linux_9/ansible/remove_template.yaml \
+        ansible-playbook -vv rock_linux_9/ansible/remove_template.yaml \
           -e "api_user=${{ vars.PROXMOX_API_USER }}" \
           -e "api_token_id=${{ vars.PROXMOX_TOKEN_ID }}" \
           -e "api_token_secret=${{ secrets.PROXMOX_TOKEN_TESTE }}" \
