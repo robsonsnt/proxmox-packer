@@ -67,7 +67,7 @@ build {
 
   provisioner "ansible" {
     groups        = ["linux"]
-    playbook_file = "./oracle_linux_8/ansible/main.yml"
+    playbook_file = "./rock_linux_9/ansible/main.yml"
     extra_arguments = [
       "-vvv",
       "-e vra=false",
