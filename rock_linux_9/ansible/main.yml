@@ -16,7 +16,7 @@
         - net-tools
         - telnet
 
-    - name: System update
-      ansible.builtin.yum:
-        name: "*"
-        state: present
+    # - name: System update
+    #   ansible.builtin.yum:
+    #     name: "*"
+    #     state: present
