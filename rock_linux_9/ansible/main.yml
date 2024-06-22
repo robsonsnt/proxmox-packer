@@ -15,7 +15,6 @@
         - vim
         - net-tools
         - telnet
-        - python38
 
     - name: System update
       ansible.builtin.yum:
