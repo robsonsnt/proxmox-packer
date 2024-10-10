@@ -9,10 +9,11 @@ on:
         type: choice
         options:
           - oracle_linux
-          - rock_linux
+          - rocky_linux
 
 jobs:
   build_oracle_linux:
+    if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
     runs-on:
     - self-hosted
     - packer
@@ -58,7 +59,8 @@ jobs:
         PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
         PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
 
-  build_rock_linux:
+  build_rocky_linux:
+    if: ${{ github.event.inputs.template_name == 'rocky_linux' }}
     runs-on:
     - self-hosted
     - packer

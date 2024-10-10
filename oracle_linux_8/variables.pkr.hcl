@@ -50,7 +50,7 @@ variable "ssh_password" {
 
 variable "ol8_image" {
   type    = string
-  default = "OracleLinux-R8-U9-x86_64-dvd.iso"
+  default = "OracleLinux-R8-U10-x86_64-dvd.iso"
 }
 
 variable "proxmox_iso_pool" {

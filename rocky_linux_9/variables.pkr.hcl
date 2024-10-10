@@ -48,7 +48,7 @@ variable "ssh_password" {
   default = ""
 }
 
-variable "rock9_image" {
+variable "rocky9_image" {
   type    = string
   default = "Rocky-9.3-x86_64-dvd.iso"
 }
@@ -90,17 +90,17 @@ variable "proxmox_storage_pool_type" {
 
 variable "http_directory" {
   type    = string
-  default = "rock_linux_9/http"
+  default = "rocky_linux_9/http"
 }
 
 variable "template_description" {
   type    = string
-  default = "Rock Linux 9 Template"
+  default = "Rocky Linux 9 Template"
 }
 
 variable "template_name" {
   type    = string
-  default = "RockLinux9-Template-CI"
+  default = "RockyLinux9-Template-CI"
 }
 
 variable "version" {
