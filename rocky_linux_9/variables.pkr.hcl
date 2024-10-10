@@ -48,9 +48,9 @@ variable "ssh_password" {
   default = ""
 }
 
-variable "ol8_image" {
+variable "rocky9_image" {
   type    = string
-  default = "OracleLinux-R8-U10-x86_64-dvd.iso"
+  default = "Rocky-9.3-x86_64-dvd.iso"
 }
 
 variable "proxmox_iso_pool" {
@@ -90,17 +90,17 @@ variable "proxmox_storage_pool_type" {
 
 variable "http_directory" {
   type    = string
-  default = "oracle_linux_8/http"
+  default = "rocky_linux_9/http"
 }
 
 variable "template_description" {
   type    = string
-  default = "Oracle Linux 8 Template"
+  default = "Rocky Linux 9 Template"
 }
 
 variable "template_name" {
   type    = string
-  default = "OracleLinux8-Template-CI"
+  default = "RockyLinux9-Template-CI"
 }
 
 variable "version" {
@@ -110,7 +110,7 @@ variable "version" {
 
 variable "vm_id" {
   type    = number
-  default = 134
+  default = 500
 }
 
 variable "vm_os" {
@@ -130,7 +130,7 @@ variable "vm_vcpus" {
 
 variable "vm_disk_size" {
   type    = string
-  default = "14G"
+  default = "20G"
 }
 
 variable "vm_disk_type" {

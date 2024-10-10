@@ -3,6 +3,15 @@
   become: true
 
   tasks:
+    - name: Configure Repo EPEL for Oracle Linux 8
+      yum_repository:
+        name: EPEL-OL8
+        description: Subscription Manager for Oracle Linux 8
+        baseurl: "https://download.copr.fedorainfracloud.org/results/dmann/subscription-manager/epel-8-x86_64/"
+        enabled: yes
+        gpgcheck: 0
+      when: ansible_distribution == "OracleLinux" and ansible_distribution_major_version == "8"
+      
     - name: Install base packages
       ansible.builtin.yum:
         name: "{{ item }}"
@@ -15,3 +24,4 @@
         - vim
         - net-tools
         - telnet
+        - python38

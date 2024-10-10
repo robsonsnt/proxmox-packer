@@ -1,0 +1,22 @@
+- name: Base linux configuration for packer images
+  hosts: linux
+  become: true
+
+  tasks:
+    - name: Install base packages
+      ansible.builtin.yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - curl
+        - wget
+        - unzip
+        - git
+        - vim
+        - net-tools
+        - telnet
+
+    # - name: System update
+    #   ansible.builtin.yum:
+    #     name: "*"
+    #     state: present
