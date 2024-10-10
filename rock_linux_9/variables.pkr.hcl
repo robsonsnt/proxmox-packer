@@ -143,6 +143,11 @@ variable "vm_scsi_controller" {
   default = "virtio-scsi-single"
 }
 
+variable "disk_format" {
+  type    = string
+  default = "raw"
+}
+
 variable "vm_network_adapters_bridge" {
   type    = string
   default = "vmbr0"
