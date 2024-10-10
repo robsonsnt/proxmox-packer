@@ -69,10 +69,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Remove Rock Linux Template
-      if: ${{ github.event.inputs.template_name == 'rock_linux' }}
+    - name: Remove Rocky Linux Template
       run: |
-        ansible-playbook -vv rock_linux_9/ansible/remove_template.yaml \
+        ansible-playbook -vv rocky_linux_9/ansible/remove_template.yaml \
           -e "api_user=${{ vars.PROXMOX_API_USER }}" \
           -e "api_token_id=${{ vars.PROXMOX_TOKEN_ID }}" \
           -e "api_token_secret=${{ secrets.PROXMOX_TOKEN_TESTE }}" \
@@ -80,10 +79,9 @@ jobs:
           -e "vmid=500" \
           -e "proxmox_node=${{ vars.PROXMOX_NODE }}"
 
-    - name: Init Rock Linux Template
-      if: ${{ github.event.inputs.template_name == 'rock_linux' }}
+    - name: Init Rocky Linux Template
       run:
-        packer init -upgrade rock_linux_9/
+        packer init -upgrade rocky_linux_9/
       env:
         PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
         PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
@@ -93,10 +91,9 @@ jobs:
         PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
         PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
 
-    - name: Build Rock Linux Template
-      if: ${{ github.event.inputs.template_name == 'rock_linux' }}
+    - name: Build Rocky Linux Template
       run:
-         packer build rock_linux_9/
+         packer build rocky_linux_9/
       env:
         PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
         PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
