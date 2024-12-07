@@ -65,6 +65,15 @@ build {
         "sudo yum update -y"
         ]
   }
+  provisioner "shell" "adjusting_ssh_key" {
+    inline = [
+      "sudo mkdir -p /infra/.ssh",
+      "sudo chmod 700 /infra/.ssh",
+      "sudo echo $SSH_PUBLIC_KEY > /infra/.ssh/authorized_keys",
+      "sudo chmod 600 /infra/.ssh/authorized_keys",
+      "sudo chown -R infra:infra /infra/.ssh"
+    ]
+  }
 
   provisioner "ansible" {
     groups        = ["linux"]
@@ -78,13 +87,4 @@ build {
       "-e ansible_password=${build.Password}"
     ]
   }
-  provisioner "shell" {
-    inline = [
-      "sudo mkdir -p /infra/.ssh",
-      "sudo chmod 700 /infra/.ssh",
-      "sudo echo $SSH_PUBLIC_KEY > /infra/.ssh/authorized_keys",
-      "sudo chmod 600 /infra/.ssh/authorized_keys",
-      "sudo chown -R infra:infra /infra/.ssh"
-    ]
-  }  
 }
