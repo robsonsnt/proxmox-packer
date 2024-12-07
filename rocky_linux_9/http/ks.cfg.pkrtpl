@@ -80,9 +80,4 @@ Defaults:${ssh_username} !requiretty
 Defaults:${ssh_username} visiblepw
 ${ssh_username}        ALL=(ALL)       NOPASSWD: ALL
 EOF
-mkdir -p /infra/.ssh
-chmod 700 /infra/.ssh
-touch /infra/.ssh/authorized_keys
-chmod 600 /infra/.ssh/authorized_keys      
-chown -R infra:infra /infra/.ssh
 %end
