@@ -48,6 +48,11 @@ variable "ssh_password" {
   default = ""
 }
 
+variable "ssh_public_key" {
+  type    = string
+  default = ""
+}
+
 variable "ol8_image" {
   type    = string
   default = "OracleLinux-R8-U10-x86_64-dvd.iso"

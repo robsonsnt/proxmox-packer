@@ -45,6 +45,7 @@ jobs:
         PKR_VAR_proxmox_storage_pool: ${{ vars.PROXMOX_STORAGE_POOL }}
         PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
         PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
+        PKR_VAR_ssh_public_key: ${{ secrets.PUBLIC_KEY_INFRA }}
 
     - name: Build Oracle Linux Template
       if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
@@ -58,6 +59,7 @@ jobs:
         PKR_VAR_proxmox_storage_pool: ${{ vars.PROXMOX_STORAGE_POOL }}
         PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
         PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
+        PKR_VAR_ssh_public_key: ${{ secrets.PUBLIC_KEY_INFRA }}
 
   build_rocky_linux:
     if: ${{ github.event.inputs.template_name == 'rocky_linux' }}
