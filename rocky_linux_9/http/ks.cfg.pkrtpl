@@ -82,7 +82,7 @@ ${ssh_username}        ALL=(ALL)       NOPASSWD: ALL
 EOF
 sudo mkdir -p /home/infra/.ssh
 sudo chmod 700 /home/infra/.ssh
-sudo echo ${ssh_public_key} >> /home/infra/.ssh/authorized_keys
+sudo echo ${ssh_public_key} > /home/infra/.ssh/authorized_keys
 sudo chown -R infra:infra /home/infra/.ssh
 sudo chmod 600 /home/infra/.ssh/authorized_keys
 %end
