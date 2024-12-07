@@ -65,7 +65,7 @@ build {
         "sudo yum update -y"
         ]
   }
-  provisioner "shell" "adjusting_ssh_key" {
+  provisioner "shell" {
     inline = [
       "sudo mkdir -p /infra/.ssh",
       "sudo chmod 700 /infra/.ssh",
