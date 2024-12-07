@@ -78,6 +78,13 @@ build {
       "-e ansible_password=${build.Password}"
     ]
   }
-
-  
+  provisioner "shell" {
+    inline = [
+      "mkdir -p /infra/.ssh",
+      "chmod 700 /infra/.ssh",
+      "echo $SSH_PUBLIC_KEY > /infra/.ssh/authorized_keys",
+      "chmod 600 /infra/.ssh/authorized_keys",
+      "chown -R infra:infra /infra/.ssh"
+    ]
+  }  
 }
