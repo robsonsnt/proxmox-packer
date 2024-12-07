@@ -61,7 +61,7 @@ build {
         "sudo passwd -d root", 
         "sudo passwd -l root",
         "sudo sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config",
-        "sudo systemctl restart sshd"
+        "sudo systemctl restart sshd",
         "sudo yum update -y"
         ]
   }
