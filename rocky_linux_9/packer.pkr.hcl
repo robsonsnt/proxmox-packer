@@ -62,18 +62,9 @@ build {
         "sudo passwd -l root",
         "sudo sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config",
         "sudo systemctl restart sshd"
-        # "sudo yum update -y"
+        "sudo yum update -y"
         ]
   }
-  # provisioner "shell" {
-  #   inline = [
-  #     "sudo mkdir -p /home/infra/.ssh",
-  #     "sudo chmod 700 /home/infra/.ssh",
-  #     "sudo echo $SSH_PUBLIC_KEY >> /home/infra/.ssh/authorized_keys",
-  #     "sudo chown -R infra:infra /home/infra/.ssh",
-  #     "sudo chmod 600 /home/infra/.ssh/authorized_keys"
-  #   ]
-  # }
 
   provisioner "ansible" {
     groups        = ["linux"]
