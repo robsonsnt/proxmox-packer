@@ -80,11 +80,11 @@ build {
   }
   provisioner "shell" {
     inline = [
-      "mkdir -p /infra/.ssh",
-      "chmod 700 /infra/.ssh",
-      "echo $SSH_PUBLIC_KEY > /infra/.ssh/authorized_keys",
-      "chmod 600 /infra/.ssh/authorized_keys",
-      "chown -R infra:infra /infra/.ssh"
+      "sudo mkdir -p /infra/.ssh",
+      "sudo chmod 700 /infra/.ssh",
+      "sudo echo $SSH_PUBLIC_KEY > /infra/.ssh/authorized_keys",
+      "sudo chmod 600 /infra/.ssh/authorized_keys",
+      "sudo chown -R infra:infra /infra/.ssh"
     ]
   }  
 }
