@@ -48,6 +48,11 @@ variable "ssh_password" {
   default = ""
 }
 
+variable "ssh_public_key" {
+  type    = string
+  default = ""
+}
+
 variable "rocky9_image" {
   type    = string
   default = "Rocky-9.3-x86_64-dvd.iso"

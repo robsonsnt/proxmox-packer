@@ -91,6 +91,7 @@ jobs:
         PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
         PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
         SSH_PUBLIC_KEY: ${{ secrets.PUBLIC_KEY_INFRA }}
+        PKR_VAR_ssh_public_key: ${{ secrets.PUBLIC_KEY_INFRA }}
 
     - name: Build Rocky Linux Template
       run:
@@ -104,3 +105,4 @@ jobs:
         PKR_VAR_ssh_username: ${{ vars.SSH_USERNAME }}
         PKR_VAR_ssh_password: ${{ secrets.SSH_PASSWORD }}
         SSH_PUBLIC_KEY: ${{ secrets.PUBLIC_KEY_INFRA }}
+        PKR_VAR_ssh_public_key: ${{ secrets.PUBLIC_KEY_INFRA }}
