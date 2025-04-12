@@ -36,7 +36,7 @@ jobs:
     - name: Init Oracle Linux Template
       if: ${{ github.event.inputs.template_name == 'oracle_linux' }}
       run:
-        packer init -upgrade oracle_linux_8/
+        packer init oracle_linux_8/
       env:
         PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
         PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
@@ -81,7 +81,7 @@ jobs:
 
     - name: Init Rocky Linux Template
       run:
-        packer init -upgrade rocky_linux_9/
+        packer init rocky_linux_9/
       env:
         PKR_VAR_proxmox_url: ${{ secrets.PROXMOX_URL }}
         PKR_VAR_proxmox_username: ${{ secrets.PROXMOX_USERNAME }}
