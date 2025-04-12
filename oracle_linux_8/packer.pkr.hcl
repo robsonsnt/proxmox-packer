@@ -62,6 +62,7 @@ build {
         "sudo passwd -l root",
         "sudo sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config",
         "sudo systemctl restart sshd",
+        "sudo yum install python3 -y",
         "sudo yum update -y"
         ]
   }
