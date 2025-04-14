@@ -63,6 +63,7 @@ build {
         "sudo sed -i 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config",
         "sudo systemctl restart sshd",
         "sudo yum install python3.12 -y",
+        "sudo ln -s /usr/bin/python3 usr/bin/python",
         "sudo yum update -y"
         ]
   }
