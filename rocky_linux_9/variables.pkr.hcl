@@ -55,7 +55,7 @@ variable "ssh_public_key" {
 
 variable "rocky9_image" {
   type    = string
-  default = "Rocky-9.3-x86_64-dvd.iso"
+  default = "Rocky-9.5-x86_64-dvd.iso"
 }
 
 variable "proxmox_iso_pool" {
