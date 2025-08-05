@@ -1,0 +1,20 @@
+name: Test Self-Hosted Runner
+on:
+  push:
+  pull_request:
+  workflow_dispatch:  
+
+jobs:
+  test:
+    runs-on: self-hosted,teste,packer
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Test runner
+        run: |
+          echo "🎉 Executando no self-hosted runner!"
+          echo "Hostname: $(hostname)"
+          echo "OS: $(uname -a)"
+          echo "Diretório atual: $(pwd)"
+          ls -la
